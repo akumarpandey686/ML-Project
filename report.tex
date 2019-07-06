@@ -1,0 +1,248 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[left=2.2cm, right=2.2cm, top=2cm,bottom=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+%\graphicspath{{C:/Users/Kshitij/Pictures/report/}} 
+\begin{document}
+	\begin{titlepage}
+		\centering
+		{\Large \textbf{ SUMMER INTERNSHIP PROGRAM 2019 } }\\
+		\vspace{1\baselineskip} 
+		{\Large \textbf {20th May, 2019 - 5th July, 2019}  }\\
+		\vspace{1\baselineskip} 
+		{\Large \textbf{ Human Activity Recognition Using Smartphone } }\\
+			\vspace{1\baselineskip}
+		{\Large Final Report  }\\
+			\vspace{1\baselineskip}
+		\begin{figure}[!h]
+			\begin{center}
+				\includegraphics[scale=0.6]{mnitlogo.png}
+			\end{center}
+		\end{figure}
+		{\large \textbf{ MALAVIYA NATIONAL INSTITUTE OF TECHNOLOGY} }\\
+		\vspace{1\baselineskip} 
+		\begin{figure}[!h]
+			\begin{center}
+				\includegraphics[scale=0.6]{ramanlogo.png}
+			\end{center}
+		\end{figure}
+		{\large \textbf{ ROBOTICS AND MACHINE ANALYTICS (RAMAN) LAB} }\\
+		\vspace{1\baselineskip} 
+	{\large \textbf Submitted by:}\\
+	\begin{table}[h!]
+		\begin{center}
+			\begin{tabular}{c c c} 
+				\textbf{Mukul Dhaka} & \textbf{Kshitij Abhay} & \textbf{Abhishek Kumar Pandey}\\
+				Govt. Engineering College  & Govt. Engineering College & Cochin University of Science\\
+				Ajmer&Ajmer&and Technology\\
+				mukuldhaka5@gmail.com & kshitijabhay@gmail.com & akumarpandey686@gmail.com\\
+			\end{tabular}
+		\end{center}
+	\end{table}
+	{\large \textbf {Under the supervision of}}\\
+	\vspace{1\baselineskip}
+	{\large \textbf {Prof.(Dr.) Rajesh Kumar }}\\
+	\vspace{0.4\baselineskip}
+	{\large \textbf {Department of Electrical Engineering \\Malaviya National Institute of Technology \\Jaipur, Rajasthan, India}}
+ 	\end{titlepage}
+ \renewcommand\thesection{\arabic{section}}
+	\tableofcontents
+	\newpage
+	\section{Introduction}
+	The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING UPSTAIRS, WALKING DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist.  \cite{first}\\
+	
+	 Using its embedded accelerometer and gyroscope, 3-axial linear acceleration and 3-axial angular velocity has been captured at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually.\\
+	 
+	  The obtained dataset has been randomly partitioned into two sets, where 70\% of the volunteers was selected for generating the training data and 30\% the test data. \\
+	
+	The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50\% overlap (128 readings/window).\\
+	 The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity.\\
+	 
+	  The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.\\
+	  
+	There are 7352 records in training set and 2947 records in testing set.\\ 
+	
+	
+	\newpage
+	
+	\section{Problem Development}
+	Activity recognition data set built from the recordings of 30 subjects performing basic activities and postural transitions while carrying a waist-mounted smartphone with embedded inertial sensors.                              \cite{second}
+	\subsection{Information regarding Features } 
+	The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz.\\ 
+	
+	Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+	\\
+	Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). \\
+	
+	\subsection{List of Features in dataset}
+	These signals were used to estimate variables of the feature vector for each pattern:  \\
+	'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+	\begin{itemize}
+	\item tBodyAcc-XYZ
+	\item tGravityAcc-XYZ
+	\item tBodyAccJerk-XYZ
+	\item tBodyGyro-XYZ
+	\item tBodyGyroJerk-XYZ
+	\item tBodyAccMag
+	\item tGravityAccMag
+	\item tBodyAccJerkMag
+	\item tBodyGyroMag
+	\item tBodyGyroJerkMag
+	\item fBodyAcc-XYZ
+	\item fBodyAccJerk-XYZ
+	\item fBodyGyro-XYZ
+	\item fBodyAccMag
+	\item fBodyAccJerkMag
+	\item fBodyGyroMag
+	\item fBodyGyroJerkMag\\
+
+	The set of variables that were estimated from these signals are: \\
+	\item mean(): Mean value
+	\item std(): Standard deviation
+	\item mad(): Median absolute deviation 
+	\item max(): Largest value in array
+	\item min(): Smallest value in array
+	\item sma(): Signal magnitude area
+	\item energy(): Energy measure. Sum of the squares divided by the number of values. 
+	\item iqr(): Interquartile range 
+	\item entropy(): Signal entropy
+	\item arCoeff(): Autorregresion coefficients with Burg order equal to 4
+	\item correlation(): correlation coefficient between two signals
+	\item maxInds(): index of the frequency component with largest magnitude
+	\item meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+	\item skewness(): skewness of the frequency domain signal 
+	\item kurtosis(): kurtosis of the frequency domain signal
+	\item bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+	\item angle(): Angle between to vectors.
+	\\
+	
+	Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+	\item gravityMean
+	\item tBodyAccMean
+	\item tBodyAccJerkMean
+	\item tBodyGyroMean
+	\item tBodyGyroJerkMean  
+
+\end{itemize}		
+\newpage
+\section{Methodology}
+\subsection{Logistic Regression}
+Logistic Regression uses Sigmoid function.
+
+An explanation of logistic regression can begin with an explanation of the standard logistic function. The logistic function is a Sigmoid function, which takes any real value between zero and one. It is defined as
+\begin{equation}
+\sigma(t)=\frac{e^t}{(e^t+1)} = \frac{1}{(1+e^{-t})} 
+\end{equation}
+And if we plot it, the graph will be S curve,
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[scale=0.3]{sigmoid.png}
+		\caption{Sigmod Function \cite{sigmoid}} 
+			
+\end{center}
+\end{figure}\\
+\subsubsection{Multinomial Logistic Regression}
+Since we are having more than 2 classes therefore we are using Multinomial Logistic Regression.\\
+\\
+Multinomial Logistic Regression is the regression analysis to conduct when the dependent variable is nominal with more than two levels.  Similar to multiple linear regression, the multinomial regression is a predictive analysis. Multinomial regression is used to explain the relationship between one nominal dependent variable and one or more independent variables.\cite{third}\\
+
+\subsection{Support vector machine}
+A Support Vector Machine is a supervised machine learning algorithm which can be used for both classification and regression problems. It follows a technique called the kernel trick to transform the data and based on these transformations, it finds an optimal boundary between the possible outputs.
+The main idea is to identify the optimal separating hyperplane which maximizes the margin of the training data.
+\subsection{Random forest}
+ Random forest algorithm is a supervised classification algorithm. As the name suggest, this algorithm creates the forest with a number of trees.
+In general, the more trees in the forest the more robust the forest looks like. In the same way in the random forest classifier, the higher the number of trees in the forest gives the high accuracyresults.
+
+\section{Simulations and Results}
+\subsection{Using Logistic Regression}
+\begin{figure}[!h]
+	\begin{center}
+
+		\includegraphics[scale=0.6]{logistic.png}
+		\caption{Logistic Regression}
+	\end{center}
+\end{figure}
+Here, we are tunning the parameter(C) using multiple values of C and we have seen that at C=0.5, we are getting the highest testing accuracy of approximately 96.23\%. \\
+\subsection{Using SVM}
+\begin{figure}[!h]
+\begin{center}
+
+		\includegraphics[scale=0.6]{svm.png}
+		\caption{SVM}
+\end{center}
+\end{figure}
+We have come across the equation of a straight line as \(y=mx+c\), where \(m\) is the slope and \(c\) is the y-intercept of the line and m and c are the parameter for the model and we have kept them as default. So we are getting the testing accuracy of 93.07\% \\
+\newpage
+\subsection{Using Random Forest}
+\begin{figure}[h!]
+	\begin{center}
+	\includegraphics[scale=0.6]{random.png}
+			\caption{Random Forest}	
+	\end{center}
+\end{figure}
+To perform the prediction using the trained random forest algorithm we have passed the test data through the rules of each randomly created trees. \\
+We got the testing accuracy of about 
+
+\begin{table}[h!]
+	\begin{center}
+		\caption{Accuracy table for Training Session}
+		\begin{tabular}{|c|c|} 
+			\hline 
+			\textbf{Training Method} & \textbf{Accuracy} \\
+			\hline
+			Using SVM  & 95.79\%\\
+			\hline
+			Using Random Forest  & 99.97\%\\
+			\hline
+			Using Logistic Regression   & 98.95\%\\
+			\hline	
+		\end{tabular}
+	\end{center}
+\end{table}
+\begin{table}[h!]
+	\begin{center}
+		\caption{Accuracy table for Testing Session}
+		\begin{tabular}{|c|c|} 
+			\hline
+			\textbf{Testing Method} & \textbf{Accuracy} \\
+			\hline
+			Using SVM & 93.07\%\\
+			\hline
+			Using Random Forest & 90.70\%\\
+			\hline
+			Using Logistic Regression & 96.23\%\\	
+			\hline	
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\newpage
+   
+\section{Conclusions and Future work}
+	We achieved,\\ Training accuracy using Logistic Regression is : 98.95\%\\
+	Testing Accuracy using Logistic Regression is : 96.23\%  \\
+Logistic Regression gives the best performance and stability, hence, it is promising to run on mobile devices.\\
+ In this work, we analyzed the role of accelerometer and gyroscope sensor in activity recognition using logistic regression. Based on the experiment, accelerometer and gyroscope sensors can be used to recognize human activities individual. Combining both sensors performed better than using them individually, however, using multiple sensors can create serious challenge due to mobile phone battery limitations- low battery capacity. Activity recognition needs continuous sensing from the mobile phone. In future, we will use accelerometer sensor data to implement real time human activity recognition using smartphone.  \cite{future}  
+
+\begin{thebibliography}{1}
+		\bibitem{first}
+		https://github.com/gokulramanaa/Human-Activity-Recognition-with-Smartphones
+		\bibitem{second}
+		https://archive.ics.uci.edu/ml/datasets/human+activity+recognition+using+smartphones
+		\bibitem{third}
+		https://www.statisticssolutions.com/mlr/		
+		\bibitem{sigmoid}
+		https://www.researchgate.net/profile/Knut\_Kvaal/publication/239269767/figure/fig2/AS:643520205430784@1530438581076/An-illustration-of-the-signal-processing-in-a-sigmoid-function.png
+		\bibitem{axis}
+		https://static1.squarespace.com/static/597d2753be6594cef6a34840/597d2c4715d5dbc171e4723f/597ded44e45a7c9f617e440b/1504188481214/micromachines-06-01100-g002.png?format=1000w
+		\bibitem{future}
+		https://www.google.com/url?q=https://dl.acm.org/citation.cfm?id%3D3195157&sa=D&source=hangouts&ust=1562309544366000&usg=AFQjCNHdg7DpR75nWJX5E7WmNQdrHtDc-g
+		
+\end{thebibliography}
+\end{document}
